@@ -2,6 +2,8 @@ package guru.springframework.spring5recipeapp.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,8 +11,9 @@ import java.util.Set;
 /**
  * Created by gd on 9/5/2023
  */
-@Data
 @Entity
+@Getter
+@Setter
 public class Recipe {
 
     @Id

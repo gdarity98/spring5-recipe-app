@@ -8,8 +8,9 @@ import java.util.Set;
 /**
  * Created by gd on 9/6/2023
  */
-@Data
 @Entity
+@Getter
+@Setter
 public class Category {
 
     @Id
