@@ -2,11 +2,16 @@ package guru.springframework.spring5recipeapp.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Created by gd on 9/5/2023
  */
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Notes {
 

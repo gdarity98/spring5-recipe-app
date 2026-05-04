@@ -9,7 +9,8 @@ import lombok.*;
 /**
  * Created by gd on 9/5/2023
  */
-@Data
+@Getter
+@Setter
 @Entity
 public class UnitOfMeasure {
     @Id
