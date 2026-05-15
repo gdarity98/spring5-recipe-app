@@ -1,8 +1,8 @@
 package guru.springframework.spring5recipeapp.commands;
 
 import guru.springframework.spring5recipeapp.domain.Recipe;
-import jakarta.persistence.Lob;
-import jakarta.persistence.OneToOne;
+import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
