@@ -16,6 +16,7 @@ import javax.validation.Valid;
 @Slf4j
 @Controller
 public class RecipeController {
+
     private static final String RECIPE_RECIPEFORM_URL = "recipe/recipeform";
     private final RecipeService recipeService;
 
@@ -35,7 +36,7 @@ public class RecipeController {
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommand());
 
-        return RECIPE_RECIPEFORM_URL;
+        return "recipe/recipeform";
     }
 
     @GetMapping("recipe/{id}/update")
@@ -44,18 +45,20 @@ public class RecipeController {
         return RECIPE_RECIPEFORM_URL;
     }
 
-    @PostMapping("/recipe")
-    public String saveOrUpdate(@Valid @ModelAttribute("RecipeCommand") RecipeCommand command, BindingResult bindingResult){
+    @PostMapping("recipe")
+    public String saveOrUpdate(@Valid @ModelAttribute("recipe") RecipeCommand command, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
+
             bindingResult.getAllErrors().forEach(objectError -> {
                 log.debug(objectError.toString());
             });
+
             return RECIPE_RECIPEFORM_URL;
         }
 
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
-        System.out.println("Submitted: " + command.getId());
+
         return "redirect:/recipe/" + savedCommand.getId() + "/show";
     }
 
@@ -71,6 +74,7 @@ public class RecipeController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
     public ModelAndView handleNotFound(Exception exception){
+
         log.error("Handling not found exception");
         log.error(exception.getMessage());
 
@@ -81,4 +85,5 @@ public class RecipeController {
 
         return modelAndView;
     }
+
 }
